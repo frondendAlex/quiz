@@ -1,5 +1,8 @@
+import { data } from "./data.js";
 document.addEventListener('DOMContentLoaded', () => {
     'use strict'
+
+    
 
     const QUESTION_URL = fetch('js/bd.json');
 
@@ -49,5 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
             quizAnswers.insertAdjacentHTML('beforeend', ansewrHTML);
         });
     }
+
+    const d = data();
+
 
 });
