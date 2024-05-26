@@ -4,14 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const QUESTION_URL = fetch('js/bd.json');
     const quizAnswers = document.querySelector('.quiz__answers');
     const quizBtn = document.querySelector('.quiz__btn');
+    let question = ''
     let countQuestion = 0;
-    
+
     // Получения данных
     QUESTION_URL.then(response => {
         return response.json();
     })
     .then(data => {
-        const question = data[0].questions;
+        question = data[0].questions;
         renderTitle(question);
         renderAnswers(question);
         renderNumberQuestion(question);
@@ -70,9 +71,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
     const btnClick = () => {
-        console.log('Click');
-    }
+        if (!quizBtn.classList.contains('quiz__btn-bg')) return;
+
+        question[countQuestion].answer.forEach((element, i) => {
+            if (question[countQuestion].correct === i) {
+                console.log('yes');
+            } else {
+                console.log('no');
+            }
+        });
+
+
+
+        countQuestion++;
+
+        if (countQuestion >= question.length) {
+            // Показывать итоговый блок
+            countQuestion = 0;
+        }
+
+        
+
+        quizBtn.classList.remove('quiz__btn-bg');
+        quizAnswers.innerHTML = '';
+        renderTitle(question);
+        renderNumberQuestion(question);
+        renderAnswers(question);
+        renderWinning(question);
+        
+        
+}
+
+    
     
     
 
