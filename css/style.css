@@ -138,11 +138,14 @@ body::before {
     line-height: 20px;
     font-weight: 500;
     background-color: #fff;
-    padding: 6px 16px;
+    padding: 6px 54px 6px 16px;
     border-radius: 12px;
     border: 1px solid #000;
-    transition: background-color 300ms linear;
     cursor: pointer;
+}
+.quiz__answer.checked {
+    color: #000;
+    background: url(../image/icon/check.svg) 96% center / 30px 30px no-repeat #fff;
 }
 .quiz__answer.rightanswer {
     background-color: #2d762d;
@@ -152,19 +155,16 @@ body::before {
     background-color: #c73333;
     color: #fff;
 }
-.quiz__answer:hover {
-    background-color: #bddbd0;
-}
 .quiz__answer span {
     font-weight: 700;
 }
-.quiz__btn {
+.quiz__button {
     display: flex;
     justify-content: center;
     background-color: #194856;
     padding: 16px 0;
 }
-.quiz__btn button {
+.quiz__btn {
     width: 100%;
     max-width: 160px;
     height: 44px;
@@ -172,9 +172,14 @@ body::before {
     font-weight: 700;
     color: #fff;
     padding: 6px 20px;
-    background-color: #6971ad;
+    background-color: #545454;
     border-radius: 12px;
+    cursor: no-drop;
 }
-.quiz__btn button:hover {
+.quiz__btn.quiz__btn-bg {
+    background-color: #6971ad;
+    cursor: pointer;
+}
+.quiz__btn.quiz__btn-bg:hover {
     background-color: #4f5583;
 }
