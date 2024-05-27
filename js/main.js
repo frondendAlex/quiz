@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const QUESTION_URL = fetch('js/bd.json');
     const quizAnswers = document.querySelector('.quiz__answers');
     const quizBtn = document.querySelector('.quiz__btn');
-    let question = ''
+    let question;
+    let choosingAnswerInd;
+    const priceArr = [];
     let countQuestion = 0;
 
     // Получения данных
@@ -29,17 +31,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Отображает какой выигрыш
     const renderWinning = (question) => {
         const quizPrice = document.querySelector('.quiz__winning');
+        quizPrice.innerHTML = '';
         const winning = `<span class="quiz__winning-text">${question[countQuestion].price} ₽</span>`;
-        quizPrice.innerHTML = winning;
+        quizPrice.insertAdjacentHTML('beforeend', winning);
     }
 
     // Отображает на странице ВОПРОС
     const renderTitle = (question) => {
         const quizQuestionTitle = document.querySelector('.quiz__question');
-        for (let i = 0; i < question.length; i++) {
-            const titleHTML = `<h1 class="quiz__question-title"><span>${countQuestion + 1}.</span>${question[countQuestion].question}</h1>`;
-            quizQuestionTitle.innerHTML = titleHTML;
-        }
+        quizQuestionTitle.innerHTML = '';
+        console.log(question[countQuestion]);
+        const titleHTML = `<h1 class="quiz__question-title"><span>${countQuestion + 1}.</span>${question[countQuestion].question}</h1>`;
+        quizQuestionTitle.insertAdjacentHTML('beforeend', titleHTML);
     }
 
     // Отображает на странице ОТВЕТЫ
@@ -48,16 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
         question[countQuestion].answer.forEach((el, i) => {
             const ansewrHTML = `<p class="quiz__answer"><span>${order[i]}.</span> ${el}</p>`;
             quizAnswers.insertAdjacentHTML('beforeend', ansewrHTML);
-            
         });
         getAnswers();
     }
 
-    // События (выбор правильного ответа)
+    // События по ответам
     const getAnswers = () => {
         const answers = document.querySelectorAll('.quiz__answer');
-        answers.forEach(answer => {
+        answers.forEach((answer, ind) => {
             answer.addEventListener('click', ( {target} ) => {
+                choosingAnswerInd = ind;
+
                 answers.forEach(answer => answer.classList.remove('checked'));
                 target.classList.add('checked');
                 quizBtn.classList.add('quiz__btn-bg');
@@ -65,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Праверка на выбор ответа
                 if (target.classList.contains('checked')) {
                     quizBtn.addEventListener('click', btnClick);
+                    quizBtn.textContent = 'Ответить'
                 }
 
             });
@@ -74,35 +79,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const btnClick = () => {
         if (!quizBtn.classList.contains('quiz__btn-bg')) return;
-
-        question[countQuestion].answer.forEach((element, i) => {
-            if (question[countQuestion].correct === i) {
-                console.log('yes');
-            } else {
-                console.log('no');
-            }
-        });
+        const answers = document.querySelectorAll('.quiz__answer');
 
 
-
-        countQuestion++;
-
-        if (countQuestion >= question.length) {
-            // Показывать итоговый блок
-            countQuestion = 0;
+        if (choosingAnswerInd === question[countQuestion].correct) {
+            answers[choosingAnswerInd].classList.add('rightanswer');
+            answers[choosingAnswerInd].classList.remove('checked');
+            priceArr.push(question[countQuestion].price);
+        } else {
+            answers[choosingAnswerInd].classList.add('wronganswer');
+            answers[choosingAnswerInd].classList.remove('checked');
         }
 
-        
+        if (countQuestion >= question.length) {
+            // Показывать итоговый контент
+            countQuestion = 0;
+            console.log(priceArr);
+        }
 
-        quizBtn.classList.remove('quiz__btn-bg');
-        quizAnswers.innerHTML = '';
-        renderTitle(question);
-        renderNumberQuestion(question);
-        renderAnswers(question);
-        renderWinning(question);
+
+        setTimeout(() => {
+            countQuestion++;
+            quizBtn.classList.remove('quiz__btn-bg');
+            quizAnswers.innerHTML = '';
+            renderTitle(question);
+            renderNumberQuestion(question);
+            renderAnswers(question);
+            renderWinning(question);
+            quizBtn.textContent = 'Выберите ответ';
+        }, 1000);
+
         
-        
-}
+    }
+
+
+
 
     
     

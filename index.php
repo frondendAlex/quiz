@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="quiz__button">
-                    <button class="quiz__btn" type="button">Ответить</button>
+                    <button class="quiz__btn" type="button">Выберите ответ</button>
                 </div>
                 
             </div>
