@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let question;
     let choosingAnswerInd;
     const priceArr = [];
+    // let total = 0;
     let countQuestion = 0;
 
     // Получения данных
@@ -40,9 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderTitle = (question) => {
         const quizQuestionTitle = document.querySelector('.quiz__question');
         quizQuestionTitle.innerHTML = '';
-        console.log(question[countQuestion]);
+
+        if (countQuestion >= question.length) {
+            countQuestion = 0;
+            const totalPrice = totalFun();
+            console.log(totalPrice);
+        }
+        
         const titleHTML = `<h1 class="quiz__question-title"><span>${countQuestion + 1}.</span>${question[countQuestion].question}</h1>`;
         quizQuestionTitle.insertAdjacentHTML('beforeend', titleHTML);
+        
     }
 
     // Отображает на странице ОТВЕТЫ
@@ -76,11 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     const btnClick = () => {
         if (!quizBtn.classList.contains('quiz__btn-bg')) return;
         const answers = document.querySelectorAll('.quiz__answer');
-
 
         if (choosingAnswerInd === question[countQuestion].correct) {
             answers[choosingAnswerInd].classList.add('rightanswer');
@@ -90,14 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             answers[choosingAnswerInd].classList.add('wronganswer');
             answers[choosingAnswerInd].classList.remove('checked');
         }
-
-        if (countQuestion >= question.length) {
-            // Показывать итоговый контент
-            countQuestion = 0;
-            console.log(priceArr);
-        }
-
-
+    
         setTimeout(() => {
             countQuestion++;
             quizBtn.classList.remove('quiz__btn-bg');
@@ -107,9 +106,15 @@ document.addEventListener('DOMContentLoaded', () => {
             renderAnswers(question);
             renderWinning(question);
             quizBtn.textContent = 'Выберите ответ';
-        }, 1000);
+        }, 3000);
 
         
+    }
+
+    // Итоговый общий выигрыш
+    const totalFun = () => {
+        let total = priceArr.reduce((accumulator, item ) => accumulator + item , 0);
+        return total;
     }
 
 

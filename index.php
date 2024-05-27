@@ -26,26 +26,12 @@
             </div>
 
             <div class="quiz__content">
-
-                <div class="quiz__question">
-                    <!-- <h1 class="quiz__question-title"><span>1.</span>Вопрос</h1>`; -->
-                </div>
-
-                <div class="quiz__winning">
-                    <!-- <span class="quiz__winning-text">3000 ₽</span> -->
-                </div>
-
-                <div class="quiz__answers">
-                    <!-- <p class="quiz__answer"><span>А.</span> Ответ 1</p>
-                    <p class="quiz__answer rightanswer"><span>Б.</span> Ответ 2</p>
-                    <p class="quiz__answer"><span>В.</span> Ответ 3</p>
-                    <p class="quiz__answer wronganswer"><span>Г.</span> Ответ 4</p> -->
-                </div>
-
+                <div class="quiz__question"></div>
+                <div class="quiz__winning"></div>
+                <div class="quiz__answers"></div>
                 <div class="quiz__button">
                     <button class="quiz__btn" type="button">Выберите ответ</button>
                 </div>
-                
             </div>
 
             <div class="quiz__progress">
