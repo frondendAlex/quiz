@@ -76,6 +76,21 @@ body::before {
     width: 100%;
     max-width: 700px;
 }
+.quiz__top-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+}
+.quiz__top-total {
+    background-color: #0e9944;
+    padding: 4px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #dddddd;
+    border: 2px solid #fff;
+}
 .quiz__top {
     color: #fff;
     margin: 0 0 10px 0;

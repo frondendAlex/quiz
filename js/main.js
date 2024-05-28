@@ -4,11 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const QUESTION_URL = fetch('js/bd.json');
     const quizAnswers = document.querySelector('.quiz__answers');
     const quizBtn = document.querySelector('.quiz__btn');
+    const quizTotalEl = document.querySelector('.quiz__top-total');
     let question;
     let choosingAnswerInd;
     const priceArr = [];
-    // let total = 0;
+    let total = 0;
     let countQuestion = 0;
+    let btnInterval;
 
     // Получения данных
     QUESTION_URL.then(response => {
@@ -77,14 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Праверка на выбор ответа
                 if (target.classList.contains('checked')) {
                     quizBtn.addEventListener('click', btnClick);
-                    quizBtn.textContent = 'Ответить'
+                    quizBtn.textContent = 'Ответить';
                 }
 
             });
         });
     }
 
+
     const btnClick = () => {
+        clearInterval(btnInterval);
         if (!quizBtn.classList.contains('quiz__btn-bg')) return;
         const answers = document.querySelectorAll('.quiz__answer');
 
@@ -92,12 +96,27 @@ document.addEventListener('DOMContentLoaded', () => {
             answers[choosingAnswerInd].classList.add('rightanswer');
             answers[choosingAnswerInd].classList.remove('checked');
             priceArr.push(question[countQuestion].price);
+            quizTotalEl.textContent = `${totalFun()} очков`;
+            
         } else {
             answers[choosingAnswerInd].classList.add('wronganswer');
             answers[choosingAnswerInd].classList.remove('checked');
         }
+
+        // Подсвечивает все не праильные ответы
+        answers.forEach(el => {
+            if (!el.classList.contains('rightanswer')) {
+                el.classList.add('wronganswer')
+            }
+        });
     
-        setTimeout(() => {
+        showNextQuestion();
+        
+    }
+
+    // Показывает следующий вопрос через 3 секунды
+    const showNextQuestion = () => {
+        btnInterval = setTimeout(() => {
             countQuestion++;
             quizBtn.classList.remove('quiz__btn-bg');
             quizAnswers.innerHTML = '';
@@ -107,13 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
             renderWinning(question);
             quizBtn.textContent = 'Выберите ответ';
         }, 3000);
-
-        
     }
 
     // Итоговый общий выигрыш
     const totalFun = () => {
-        let total = priceArr.reduce((accumulator, item ) => accumulator + item , 0);
+        total = priceArr.reduce((accumulator, item ) => accumulator + item , 0);
         return total;
     }
 
