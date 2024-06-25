@@ -38,7 +38,8 @@
             </div>
 
             <div class="quiz__progress">
-                Прогресс
+                <span class="quiz__progress-line"></span>
+                <span class="quiz__progress-text">0%</span>
             </div>
 
         </div>

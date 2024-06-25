@@ -222,3 +222,30 @@ body::before {
 .quiz__btn.quiz__btn-bg:hover {
     background-color: #4f5583;
 }
+.quiz__progress {
+    background-color: #fff;
+    margin: 10px 0 0 0;
+    border-radius: 12px;
+    padding: 2px 6px;
+    position: relative;
+    overflow: hidden;
+}
+.quiz__progress-line {
+    display: block;
+    height: 100%;
+    background: rgb(5,3,36);
+    background: linear-gradient(90deg, rgba(5,3,36,0.9612219887955182) 5%, rgba(9,111,121,1) 37%, rgba(6,148,170,1) 67%, rgba(3,209,137,1) 89%, rgba(84,164,98,1) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 12px;
+    transition: width .3s linear;
+}
+.quiz__progress-text {
+    display: block;
+    font-weight: 800;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}

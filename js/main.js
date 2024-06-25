@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const quizAnswers = document.querySelector('.quiz__answers');
     const quizBtn = document.querySelector('.quiz__btn');
     const quizTotalEl = document.querySelector('.quiz__top-total');
+    const quizProgressbar = document.querySelector('.quiz__progress-line');
+    const quizProgressbarText = document.querySelector('.quiz__progress-text');
     let question;
     let choosingAnswerInd;
     const priceArr = [];
@@ -48,11 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (countQuestion >= question.length) {
             countQuestion = 0;
             const totalPrice = totalFun();
-            console.log(totalPrice);
         }
         
         const titleHTML = `<h1 class="quiz__question-title"><span>${countQuestion + 1}.</span>${question[countQuestion].question}</h1>`;
         quizQuestionTitle.insertAdjacentHTML('beforeend', titleHTML);
+
+        progressBar();
         
     }
 
@@ -81,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (target.classList.contains('checked')) {
                     quizBtn.addEventListener('click', btnClick);
                     quizBtn.textContent = 'Ответить';
+        
                 }
 
             });
@@ -114,16 +118,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const answersEl = content.querySelectorAll('.quiz__answer');
             answersEl.forEach((el, i) => {
                 question[countQuestion].correct === i ? el.classList.add('rightanswer') : el.classList.add('wronganswer');
-
             });
             
         }
+
+        // quizProgressbar.style.width = countQuestion * 100 / question.length + '%';
+        // quizProgressbarText.textContent = Math.round(countQuestion * 100 / question.length) + '%';
     
         showNextQuestion();
     }
 
+    
+
     // Показывает следующий вопрос через 3 секунды
     const showNextQuestion = () => {
+        progressBar();
         btnInterval = setTimeout(() => {
             countQuestion++;
             quizBtn.classList.remove('quiz__btn-bg');
@@ -140,6 +149,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalFun = () => {
         total = priceArr.reduce((accumulator, item ) => accumulator + item , 0);
         return total;
+    }
+
+    const progressBar = () => {
+        quizProgressbar.style.width = countQuestion * 100 / question.length + '%';
+        quizProgressbarText.textContent = Math.round(countQuestion * 100 / question.length) + '%';
     }
 
 
