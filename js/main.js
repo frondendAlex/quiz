@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let total = 0;
     let countQuestion = 0;
     let btnInterval;
+    
 
     // Получения данных
     QUESTION_URL.then(response => {
@@ -87,31 +88,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    const btnClick = () => {
+    const btnClick = (e) => {
         clearInterval(btnInterval);
         if (!quizBtn.classList.contains('quiz__btn-bg')) return;
         const answers = document.querySelectorAll('.quiz__answer');
-
+        
         if (choosingAnswerInd === question[countQuestion].correct) {
+            
             answers[choosingAnswerInd].classList.add('rightanswer');
             answers[choosingAnswerInd].classList.remove('checked');
             priceArr.push(question[countQuestion].price);
             quizTotalEl.textContent = `${totalFun()} очков`;
+
+            // Подсвечивает не правильные ответы
+            answers.forEach(el => {
+                !el.classList.contains('rightanswer') ? el.classList.add('wronganswer') : '';
+            });
             
         } else {
             answers[choosingAnswerInd].classList.add('wronganswer');
             answers[choosingAnswerInd].classList.remove('checked');
-        }
 
-        // Подсвечивает все не праильные ответы
-        answers.forEach(el => {
-            if (!el.classList.contains('rightanswer')) {
-                el.classList.add('wronganswer')
-            }
-        });
+            // Подсвечивает правильный ответ
+            const content = e.target.closest('.quiz__content');
+            const answersEl = content.querySelectorAll('.quiz__answer');
+            answersEl.forEach((el, i) => {
+                question[countQuestion].correct === i ? el.classList.add('rightanswer') : el.classList.add('wronganswer');
+
+            });
+            
+        }
     
         showNextQuestion();
-        
     }
 
     // Показывает следующий вопрос через 3 секунды
