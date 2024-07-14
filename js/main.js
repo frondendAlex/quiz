@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderWinning = (question) => {
         const quizPrice = document.querySelector('.quiz__winning');
         quizPrice.innerHTML = '';
-        const winning = `<span class="quiz__winning-text">${question[countQuestion].price} ₽</span>`;
+        const winning = `<span class="quiz__winning-text">${question[countQuestion].price} баллов</span>`;
         quizPrice.insertAdjacentHTML('beforeend', winning);
     }
 
@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (countQuestion >= question.length) {
             countQuestion = 0;
             const totalPrice = totalFun();
+            console.log(totalPrice);
+            quizTotalEl.textContent = `${0} баллов`;
         }
         
         const titleHTML = `<h1 class="quiz__question-title"><span>${countQuestion + 1}.</span>${question[countQuestion].question}</h1>`;

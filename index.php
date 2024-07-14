@@ -21,7 +21,7 @@
 
         <div class="quiz">
             <div class="quiz__top-wrap">
-                <div class="quiz__top-total">0 ₽</div>
+                <div class="quiz__top-total">0 баллов</div>
                 <div class="quiz__top">
                     <!-- <p class="quiz__top-text">Вопросов <span class="quiz__top-text-num">3</span> из <span class="quiz__top-text-num">10</span></p> -->
                 </div>
