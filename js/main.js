@@ -25,6 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
         renderAnswers(question);
         renderNumberQuestion(question);
         renderWinning(question);
+
+        // Проба
+        renderNumber(question);
+
     })
 
     // Отображает сколько на странице вопросов
@@ -47,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const quizQuestionTitle = document.querySelector('.quiz__question');
         quizQuestionTitle.innerHTML = '';
 
+        // Обновления квиза после последнего вопроса
         if (countQuestion >= question.length) {
             countQuestion = 0;
             const totalPrice = totalFun();
@@ -159,8 +164,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    // Проба
+    const renderNumber = (num) => {
+        const span = document.querySelector('.quiz__right-wrap');
+        span.innerHTML = ''
+        for (let i = 0; i < question.length; i++) {
+            const spanText = document.createElement('span')
+            spanText.classList.add('quiz__right-text');
+            
+            spanText.textContent = question[i].price;
+            span.append(spanText);
+        }
 
-
+        Array.from(span.querySelectorAll('.quiz__right-text'))[0].classList.add('active');
+        
+    }
     
     
     
