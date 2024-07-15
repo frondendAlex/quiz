@@ -7,12 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const quizTotalEl = document.querySelector('.quiz__top-total');
     const quizProgressbar = document.querySelector('.quiz__progress-line');
     const quizProgressbarText = document.querySelector('.quiz__progress-text');
+
+    const rightNumber = document.querySelector('.quiz__right-wrap');
+
     let question;
     let choosingAnswerInd;
     const priceArr = [];
     let total = 0;
     let countQuestion = 0;
     let btnInterval;
+    let heightCount = 0;
     
 
     // Получения данных
@@ -91,14 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (target.classList.contains('checked')) {
                     quizBtn.addEventListener('click', btnClick);
                     quizBtn.textContent = 'Ответить';
-        
                 }
 
             });
         });
     }
 
-
+    // События по кнопке "выбирите ответ"
     const btnClick = (e) => {
         clearInterval(btnInterval);
         if (!quizBtn.classList.contains('quiz__btn-bg')) return;
@@ -129,11 +132,31 @@ document.addEventListener('DOMContentLoaded', () => {
             
         }
 
-        // quizProgressbar.style.width = countQuestion * 100 / question.length + '%';
-        // quizProgressbarText.textContent = Math.round(countQuestion * 100 / question.length) + '%';
-    
+        
+        // Проба
+        indicatorPrice();
+        // Проба
+
         showNextQuestion();
     }
+
+
+    const indicatorPrice = () => {
+        // const rightPrice = Array.from(rightNumber.querySelectorAll('.quiz__right-text'));
+        const rightPrice = rightNumber.querySelectorAll('.quiz__right-text');
+        const quizRightLine = document.querySelector('.quiz__right-line');
+        
+        rightPrice.forEach(element => {
+            element.classList.remove('active');
+        });
+        
+        quizRightLine.style.top = heightCount + 40 + 'px';
+        rightPrice[countQuestion].classList.add('active');
+        
+        heightCount += 30;
+        console.log(heightCount);
+       
+    } 
 
     
 
@@ -163,28 +186,20 @@ document.addEventListener('DOMContentLoaded', () => {
         quizProgressbarText.textContent = Math.round(countQuestion * 100 / question.length) + '%';
     }
 
-
+    
     // Проба
-    const renderNumber = (num) => {
-        const span = document.querySelector('.quiz__right-wrap');
-        span.innerHTML = ''
-        for (let i = 0; i < question.length; i++) {
-            const spanText = document.createElement('span')
+    const renderNumber = (price) => {
+        rightNumber.innerHTML = '';
+        for (let i = 0; i < price.length; i++) {
+            const spanText = document.createElement('span');
             spanText.classList.add('quiz__right-text');
-            
-            spanText.textContent = question[i].price;
-            span.append(spanText);
+            spanText.textContent = price[i].price;
+            rightNumber.append(spanText);
         }
+       
+        Array.from(rightNumber.querySelectorAll('.quiz__right-text'))[0].classList.add('active');
 
-        Array.from(span.querySelectorAll('.quiz__right-text'))[0].classList.add('active');
-        
     }
     
-    
-    
-
-
-    
-
 
 });
