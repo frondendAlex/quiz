@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const quizProgressbarText = document.querySelector('.quiz__progress-text');
 
     const rightNumber = document.querySelector('.quiz__right-wrap');
+    const quizRightLine = document.querySelector('.quiz__right-line');
 
     let question;
     let choosingAnswerInd;
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderWinning(question);
 
         // Проба
-        renderNumber(question);
+        renderPrice(question);
 
     })
 
@@ -46,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderWinning = (question) => {
         const quizPrice = document.querySelector('.quiz__winning');
         quizPrice.innerHTML = '';
-        const winning = `<span class="quiz__winning-text">${question[countQuestion].price} баллов</span>`;
+        const winning = `<span class="quiz__winning-text">${question[countQuestion].price} очков</span>`;
         quizPrice.insertAdjacentHTML('beforeend', winning);
     }
 
@@ -60,12 +61,18 @@ document.addEventListener('DOMContentLoaded', () => {
             countQuestion = 0;
             const totalPrice = totalFun();
             console.log(totalPrice);
-            quizTotalEl.textContent = `${0} баллов`;
+            quizTotalEl.textContent = `${0} очков`;
+
+            // const quizRightLine = document.querySelector('.quiz__right-line');
+            console.log(heightCount);
+            quizRightLine.style.top = heightCount + 'px'
+            heightCount = 0;
+           
+            
         }
         
         const titleHTML = `<h1 class="quiz__question-title"><span>${countQuestion + 1}.</span>${question[countQuestion].question}</h1>`;
         quizQuestionTitle.insertAdjacentHTML('beforeend', titleHTML);
-
         progressBar();
         
     }
@@ -132,34 +139,25 @@ document.addEventListener('DOMContentLoaded', () => {
             
         }
 
-        
-        // Проба
-        indicatorPrice();
-        // Проба
-
         showNextQuestion();
     }
 
 
+    // Индикатор для передвежения полосы по баллам
     const indicatorPrice = () => {
-        // const rightPrice = Array.from(rightNumber.querySelectorAll('.quiz__right-text'));
         const rightPrice = rightNumber.querySelectorAll('.quiz__right-text');
-        const quizRightLine = document.querySelector('.quiz__right-line');
-        
+
         rightPrice.forEach(element => {
             element.classList.remove('active');
         });
-        
-        quizRightLine.style.top = heightCount + 40 + 'px';
+        // const quizRightLine = document.querySelector('.quiz__right-line');
         rightPrice[countQuestion].classList.add('active');
-        
-        heightCount += 30;
+        quizRightLine.style.top = heightCount + 40 + 'px';
         console.log(heightCount);
-       
+        heightCount += 30;
     } 
 
     
-
     // Показывает следующий вопрос через 3 секунды
     const showNextQuestion = () => {
         progressBar();
@@ -171,8 +169,9 @@ document.addEventListener('DOMContentLoaded', () => {
             renderNumberQuestion(question);
             renderAnswers(question);
             renderWinning(question);
+            indicatorPrice();
             quizBtn.textContent = 'Выберите ответ';
-        }, 3000);
+        }, 1500);
     }
 
     // Итоговый общий выигрыш
@@ -188,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     // Проба
-    const renderNumber = (price) => {
+    const renderPrice = (price) => {
         rightNumber.innerHTML = '';
         for (let i = 0; i < price.length; i++) {
             const spanText = document.createElement('span');
