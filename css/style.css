@@ -377,3 +377,8 @@ body::before {
   position: relative;
   z-index: 2;
 }
+
+
+.quizInfo {
+  display: none;
+}

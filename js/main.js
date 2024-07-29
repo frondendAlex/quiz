@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
     const QUESTION_URL = fetch("js/bd.json");
+    const quiz = document.querySelector(".quiz");
+    const quizInfo = document.querySelector(".quizInfo");
     const quizAnswers = document.querySelector(".quiz__answers");
     const quizBtn = document.querySelector(".quiz__btn");
     const quizTotalEl = document.querySelector(".quiz__top-total");
@@ -18,6 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let countQuestion = 0;
     let btnInterval;
     let heightCount = 0;
+
+    // const arrRightAnswer = [];
+    // const arrWrongAnswer = [];
+    let arrRightAnswer = 0;
+    let arrWrongAnswer = 0;
 
     // Получения данных
     QUESTION_URL.then((response) => {
@@ -58,8 +65,15 @@ document.addEventListener("DOMContentLoaded", () => {
         // Обновления квиза после последнего вопроса
         if (countQuestion >= question.length) {
             countQuestion = 0;
+
+            quiz.style.display = 'none';
+            quizInfo.style.display = 'block';
+
             const totalPrice = totalFun();
             // console.log(totalPrice);
+
+            quizFinish();
+
             quizTotalEl.textContent = `${0} очков`;
         }
 
@@ -118,6 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnClick = (e) => {
         clearInterval(btnInterval);
         if (!quizBtn.classList.contains("quiz__btn-bg")) return;
+
         const answers = document.querySelectorAll(".quiz__answer");
 
         if (choosingAnswerInd === question[countQuestion].correct) {
@@ -128,9 +143,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Подсвечивает не правильные ответы
             answers.forEach((el) => {
-                !el.classList.contains("rightanswer")
-                    ? el.classList.add("wronganswer")
-                    : "";
+                // !el.classList.contains("rightanswer") //
+                //     ? el.classList.add("wronganswer")
+                //     : "";
+
+                if (!el.classList.contains("rightanswer")) {
+                    el.classList.add("wronganswer");
+                    
+                } else {
+                    console.log('Yes answer');
+                    arrRightAnswer++;
+                }
+
             });
         } else {
             answers[choosingAnswerInd].classList.add("wronganswer");
@@ -140,25 +164,24 @@ document.addEventListener("DOMContentLoaded", () => {
             const content = e.target.closest(".quiz__content");
             const answersEl = content.querySelectorAll(".quiz__answer");
             answersEl.forEach((el, i) => {
-                question[countQuestion].correct === i
-                    ? el.classList.add("rightanswer")
-                    : el.classList.add("wronganswer");
+                // question[countQuestion].correct === i
+                //     ? el.classList.add("rightanswer")
+                //     : el.classList.add("wronganswer");
+
+                if (question[countQuestion].correct === i) {
+                    el.classList.add("rightanswer");
+                    console.log('No answer');
+                    arrWrongAnswer++;
+                } else {
+                    el.classList.add("wronganswer");
+                }
+
             });
         }
 
         showNextQuestion();
-
-        // Перемещает индикатор линии по очкам
-        const quizRightLine = document.querySelector('.quiz__right-line');
-        if (countQuestion >= question.length - 1) {
-            quizRightLine.style.top = 10 + 'px';
-            heightCount = 0;
-        } else {
-            quizRightLine.style.top = heightCount + 40 + "px";
-            heightCount += 30;
-        }
+        lineIndicator();
         switchClassColor();
-
     };
     
     // Меняет цвет текста у очков в правом блоке
@@ -198,6 +221,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return total;
     };
 
+    // Перемещает индикатор линии по очкам
+    const lineIndicator = () => {
+        const quizRightLine = document.querySelector('.quiz__right-line');
+        if (countQuestion >= question.length - 1) {
+            quizRightLine.style.top = 10 + 'px';
+            heightCount = 0;
+        } else {
+            quizRightLine.style.top = heightCount + 40 + "px";
+            heightCount += 30;
+        }
+    };
+
     const progressBar = () => {
         quizProgressbar.style.width =
             (countQuestion * 100) / question.length + "%";
@@ -205,6 +240,10 @@ document.addEventListener("DOMContentLoaded", () => {
             Math.round((countQuestion * 100) / question.length) + "%";
     };
 
+    const quizFinish = () => {
+        console.log('правильные ', arrRightAnswer);
+        console.log('не правильные ', arrWrongAnswer);
+    };
 
 
 });
