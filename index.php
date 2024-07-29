@@ -62,7 +62,9 @@
 
         </div>
 
-        <!-- <div>Денежное вознограждения</div> -->
+       <div class="quizInfo">
+
+       </div>
 
     </div>
     

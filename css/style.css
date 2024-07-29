@@ -186,15 +186,16 @@ body::before {
   z-index: 2;
 }
 .quiz__right-line {
-  background-color: #000;
-  width: 100%;
+  background-color: #4aa933;
+  width: 90%;
   height: 20px;
+  margin: 0 auto;
   position: absolute;
-  /* top: 10px; */
   right: 0;
   left: 0;
   border-radius: 12px;
   transition: top 0.3s linear;
+  filter: drop-shadow(3px 7px 9px #56e94c);
 }
 .quiz__top-wrap {
   display: flex;

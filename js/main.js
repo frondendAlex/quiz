@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const quizProgressbarText = document.querySelector(".quiz__progress-text");
 
     const rightNumber = document.querySelector(".quiz__right-wrap");
-    const quizRightLine = document.querySelector(".quiz__right-line");
+    // const quizRightLine = document.querySelector(".quiz__right-line");
 
     let question;
     let choosingAnswerInd;
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderNumberQuestion(question);
         renderWinning(question);
 
-        // Проба
+        // Проба (Создает справа игровые очки)
         renderPrice(question);
     });
 
@@ -59,18 +59,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (countQuestion >= question.length) {
             countQuestion = 0;
             const totalPrice = totalFun();
-            console.log(totalPrice);
+            // console.log(totalPrice);
             quizTotalEl.textContent = `${0} очков`;
-
-            // const quizRightLine = document.querySelector('.quiz__right-line');
-            console.log(heightCount);
-            quizRightLine.style.top = heightCount + "px";
-            heightCount = 0;
         }
 
-        const titleHTML = `<h1 class="quiz__question-title"><span>${
-            countQuestion + 1
-        }.</span>${question[countQuestion].question}</h1>`;
+        const titleHTML = `
+            <h1 class="quiz__question-title"><span>${countQuestion + 1}.</span>${question[countQuestion].question}</h1>
+        `;
+
         quizQuestionTitle.insertAdjacentHTML("beforeend", titleHTML);
         progressBar();
     };
@@ -83,6 +79,19 @@ document.addEventListener("DOMContentLoaded", () => {
             quizAnswers.insertAdjacentHTML("beforeend", ansewrHTML);
         });
         getAnswers();
+    };
+
+    // Создает справа игровые очки
+    const renderPrice = (price) => {
+        rightNumber.innerHTML = "";
+        for (let i = 0; i < price.length; i++) {
+            const spanText = document.createElement("span");
+            spanText.classList.add("quiz__right-text");
+            spanText.textContent = price[i].price;
+            rightNumber.append(spanText);
+        }
+
+        Array.from(rightNumber.querySelectorAll(".quiz__right-text"))[0].classList.add("active");
     };
 
     // События по ответам
@@ -138,20 +147,33 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         showNextQuestion();
-    };
 
-    // Индикатор для передвежения полосы по баллам
-    const indicatorPrice = () => {
-        const rightPrice = rightNumber.querySelectorAll(".quiz__right-text");
+        // Перемещает индикатор линии по очкам
+        const quizRightLine = document.querySelector('.quiz__right-line');
+        if (countQuestion >= question.length - 1) {
+            quizRightLine.style.top = 10 + 'px';
+            heightCount = 0;
+        } else {
+            quizRightLine.style.top = heightCount + 40 + "px";
+            heightCount += 30;
+        }
+        switchClassColor();
+
+    };
+    
+    // Меняет цвет текста у очков в правом блоке
+    const switchClassColor = () => {
+        
+        const rightPrice = Array.from(rightNumber.querySelectorAll(".quiz__right-text"));
+        rightPrice[0].classList.remove("active");
 
         rightPrice.forEach((element) => {
             element.classList.remove("active");
         });
-        // const quizRightLine = document.querySelector('.quiz__right-line');
-        rightPrice[countQuestion].classList.add("active");
-        quizRightLine.style.top = heightCount + 40 + "px";
-        console.log(heightCount);
-        heightCount += 30;
+
+        countQuestion < rightPrice.length - 1 
+            ? rightPrice[countQuestion + 1].classList.add("active")
+            : rightPrice[0].classList.add("active");
     };
 
     // Показывает следующий вопрос через 3 секунды
@@ -165,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
             renderNumberQuestion(question);
             renderAnswers(question);
             renderWinning(question);
-            indicatorPrice();
+            // switchClassColor();
             quizBtn.textContent = "Выберите ответ";
         }, 1500);
     };
@@ -183,22 +205,6 @@ document.addEventListener("DOMContentLoaded", () => {
             Math.round((countQuestion * 100) / question.length) + "%";
     };
 
-    // Проба
-    const renderPrice = (price) => {
-        rightNumber.innerHTML = "";
-        for (let i = 0; i < price.length; i++) {
-            const spanText = document.createElement("span");
-            spanText.classList.add("quiz__right-text");
-            spanText.textContent = price[i].price;
-            rightNumber.append(spanText);
-        }
 
-        Array.from(
-            rightNumber.querySelectorAll(".quiz__right-text")
-        )[0].classList.add("active");
-    };
 
-    const test = {
-        name: "2",
-    };
 });
