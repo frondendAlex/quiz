@@ -28,6 +28,11 @@
                         <!-- <p class="quiz__top-text">Вопросов <span class="quiz__top-text-num">3</span> из <span class="quiz__top-text-num">10</span></p> -->
                     </div>
                 </div>
+
+                <div class="quiz__progress">
+                    <span class="quiz__progress-line"></span>
+                    <span class="quiz__progress-text">0%</span>
+                </div>
                 
 
                 <div class="quiz__content">
@@ -39,10 +44,10 @@
                     </div>
                 </div>
 
-                <div class="quiz__progress">
+                <!-- <div class="quiz__progress">
                     <span class="quiz__progress-line"></span>
                     <span class="quiz__progress-text">0%</span>
-                </div>
+                </div> -->
             </div>
 
             <div class="quiz__right">

@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
             quiz.style.display = 'none';
             quizInfo.style.display = 'block';
 
-            const totalPrice = totalFun();
+            // const totalPrice = totalFun();
             // console.log(totalPrice);
 
             quizFinish();
@@ -132,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnClick = (e) => {
         clearInterval(btnInterval);
         if (!quizBtn.classList.contains("quiz__btn-bg")) return;
-
         const answers = document.querySelectorAll(".quiz__answer");
 
         if (choosingAnswerInd === question[countQuestion].correct) {
@@ -178,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             });
         }
-
+        
         showNextQuestion();
         lineIndicator();
         switchClassColor();
@@ -201,7 +200,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Показывает следующий вопрос через 3 секунды
     const showNextQuestion = () => {
-        progressBar();
         btnInterval = setTimeout(() => {
             countQuestion++;
             quizBtn.classList.remove("quiz__btn-bg");
@@ -241,8 +239,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const quizFinish = () => {
+        const totalPrice = totalFun();
         console.log('правильные ', arrRightAnswer);
         console.log('не правильные ', arrWrongAnswer);
+        console.log(totalPrice);
     };
 
 
