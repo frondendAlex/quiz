@@ -27,7 +27,7 @@
             <button class="start__btn" type="button" arial-label="Начать квиз">Начать</button>
         </div>
 
-        <div class="quiz" style="display: none;">
+        <div class="quiz">
 
             <div class="quiz__wrapper">
 

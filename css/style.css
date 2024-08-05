@@ -51,7 +51,7 @@ body {
 }
 
 .quiz {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   gap: 30px;
@@ -69,9 +69,10 @@ body {
   z-index: -1;
   background-color: rgba(0, 0, 0, 0.45);
 }
+.quiz.show {
+  display: flex;
+}
 .quiz__wrapper {
-  /* width: 100%;
-    max-width: 700px; */
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -285,5 +286,8 @@ body {
 
 
 .quizInfo {
-  display: none;
+  
+}
+.quizInfo.show {
+  display: block;
 }
