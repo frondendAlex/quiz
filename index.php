@@ -21,7 +21,10 @@
     <div class="app" id="app">
 
         <div class="start">
-            
+            <div class="start__wrap">
+                <h1 class="start__title">Пройдите викторину</h1>
+            </div>
+            <button class="start__btn" type="button" arial-label="Начать квиз">Начать</button>
         </div>
 
         <div class="quiz" style="display: none;">
