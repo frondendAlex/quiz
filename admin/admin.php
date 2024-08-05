@@ -20,9 +20,9 @@
     <div class="adminform">
         <form class="adminform__form" action="" method="POST">
             <h2 class="adminform__title">Войти</h2>
-            <input class="adminform__input" type="text" placeholder="Ваш email">
+            <input class="adminform__input" type="text" placeholder="Ваш логин">
             <input class="adminform__input" type="text" placeholder="Пароль">
-            <button class="adminform__btn" typr="submit">Войти</button>
+            <button class="adminform__btn" typr="submit">Подтвердить</button>
         </form>
     </div>
 
