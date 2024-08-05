@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const quizProgressbarText = document.querySelector('.quiz__progress-text');
 
     const rightNumber = document.querySelector('.quiz__right-wrap');
-    // const quizRightLine = document.querySelector(".quiz__right-line");
 
     let question;
     let choosingAnswerInd;
@@ -37,8 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
             QUESTION_URL.then((response) => {
                 return response.json();
             }).then((data) => {
-                console.log(data);
-                
                 question = data[0].questions;
                 renderTitle(question);
                 renderAnswers(question);
@@ -154,9 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Подсвечивает не правильные ответы
             answers.forEach((el) => {
-                // !el.classList.contains("rightanswer") //
-                //     ? el.classList.add("wronganswer")
-                //     : "";
 
                 if (!el.classList.contains('rightanswer')) {
                     el.classList.add('wronganswer');
@@ -175,9 +169,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const content = e.target.closest('.quiz__content');
             const answersEl = content.querySelectorAll('.quiz__answer');
             answersEl.forEach((el, i) => {
-                // question[countQuestion].correct === i
-                //     ? el.classList.add("rightanswer")
-                //     : el.classList.add("wronganswer");
 
                 if (question[countQuestion].correct === i) {
                     el.classList.add('rightanswer');
@@ -220,9 +211,8 @@ document.addEventListener("DOMContentLoaded", () => {
             renderNumberQuestion(question);
             renderAnswers(question);
             renderWinning(question);
-            // switchClassColor();
             quizBtn.textContent = 'Выберите ответ';
-        }, 1500);
+        }, 2500);
     };
 
     // Итоговый общий выигрыш
