@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
     const QUESTION_URL = fetch('js/bd.json');
-    const starttn = document.querySelector('.start__btn');
+    const start = document.querySelector('.start');
     const quiz = document.querySelector('.quiz');
     const quizInfo = document.querySelector('.quizInfo');
     const quizAnswers = document.querySelector('.quiz__answers');
@@ -27,19 +27,30 @@ document.addEventListener("DOMContentLoaded", () => {
     let arrRightAnswer = 0;
     let arrWrongAnswer = 0;
 
-    // Получения данных
-    QUESTION_URL.then((response) => {
-        return response.json();
-    }).then((data) => {
-        question = data[0].questions;
-        renderTitle(question);
-        renderAnswers(question);
-        renderNumberQuestion(question);
-        renderWinning(question);
+    const startQuiz = () => {
+        const startBtn = document.querySelector('.start__btn');
+        startBtn.addEventListener('click', () => {
+            start.classList.add('hidden');
+            quiz.classList.add('show');
 
-        // Проба (Создает справа игровые очки)
-        renderPrice(question);
-    });
+            // Получения данных
+            QUESTION_URL.then((response) => {
+                return response.json();
+            }).then((data) => {
+                console.log(data);
+                
+                question = data[0].questions;
+                renderTitle(question);
+                renderAnswers(question);
+                renderNumberQuestion(question);
+                renderWinning(question);
+
+                // Создает справа игровые очки
+                renderPrice(question);
+            });
+
+        });
+    }
 
     // Отображает сколько на странице вопросов
     const renderNumberQuestion = (num) => {
@@ -128,6 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     };
+
     // События по кнопке "выбирите ответ
     const btnClick = (e) => {
         clearInterval(btnInterval);
@@ -244,6 +256,9 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log('не правильные ', arrWrongAnswer);
         console.log(totalPrice);
     };
+
+
+    startQuiz();
 
 
 });

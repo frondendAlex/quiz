@@ -28,6 +28,9 @@ body {
   align-items: center;
   justify-content: center;
 }
+.start.hidden {
+  display: none;
+}
 .start__wrap {
   width: 100%;
   max-width: 700px;
