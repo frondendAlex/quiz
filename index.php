@@ -68,7 +68,7 @@
 
         </div>
 
-       <div class="quizInfo">
+       <div class="quizInfo" style="display: none;">
         scscsc
        </div>
 
