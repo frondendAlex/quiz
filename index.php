@@ -20,57 +20,65 @@
 
     <div class="app" id="app">
 
-        <div class="quiz">
+        <div class="start">
+            
+        </div>
 
-            <div class="quiz__left">
-                <div class="quiz__top-wrap">
-                    <div class="quiz__top-total">0 очков</div>
-                    <div class="quiz__top">
-                        <!-- <p class="quiz__top-text">Вопросов <span class="quiz__top-text-num">3</span> из <span class="quiz__top-text-num">10</span></p> -->
+        <div class="quiz" style="display: none;">
+
+            <div class="quiz__wrapper">
+
+                <div class="quiz__left">
+                    <div class="quiz__top-wrap">
+                        <div class="quiz__top-total">0 очков</div>
+                        <div class="quiz__top">
+                            <!-- <p class="quiz__top-text">Вопросов <span class="quiz__top-text-num">3</span> из <span class="quiz__top-text-num">10</span></p> -->
+                        </div>
                     </div>
-                </div>
 
-                <div class="quiz__progress">
-                    <span class="quiz__progress-line"></span>
-                    <span class="quiz__progress-text">0%</span>
-                </div>
-                
-
-                <div class="quiz__content">
-                    <div class="quiz__question"></div>
-                    <div class="quiz__winning"></div>
-                    <div class="quiz__answers"></div>   
-                    <div class="quiz__button">
-                        <button class="quiz__btn" type="button">Выберите ответ</button>
+                    <div class="quiz__progress">
+                        <span class="quiz__progress-line"></span>
+                        <span class="quiz__progress-text">0%</span>
                     </div>
+                    
+
+                    <div class="quiz__content">
+                        <div class="quiz__question"></div>
+                        <div class="quiz__winning"></div>
+                        <div class="quiz__answers"></div>   
+                        <div class="quiz__button">
+                            <button class="quiz__btn" type="button">Выберите ответ</button>
+                        </div>
+                    </div>
+
+                    <!-- <div class="quiz__progress">
+                        <span class="quiz__progress-line"></span>
+                        <span class="quiz__progress-text">0%</span>
+                    </div> -->
                 </div>
 
-                <!-- <div class="quiz__progress">
-                    <span class="quiz__progress-line"></span>
-                    <span class="quiz__progress-text">0%</span>
-                </div> -->
+                <div class="quiz__right">
+                    <div class="quiz__right-wrap">
+                        <!-- <span class="quiz__right-text active">100</span>
+                        <span class="quiz__right-text">200</span>
+                        <span class="quiz__right-text">300</span>
+                        <span class="quiz__right-text">400</span>
+                        <span class="quiz__right-text">500</span>
+                        <span class="quiz__right-text">600</span>
+                        <span class="quiz__right-text">1000</span>
+                        <span class="quiz__right-text">10000</span> -->
+                        
+                    </div>
+                    <div class="quiz__right-line" style="top: 10px;"></div>
+                </div>
+
             </div>
 
-            <div class="quiz__right">
-                <div class="quiz__right-wrap">
-                    <!-- <span class="quiz__right-text active">100</span>
-                    <span class="quiz__right-text">200</span>
-                    <span class="quiz__right-text">300</span>
-                    <span class="quiz__right-text">400</span>
-                    <span class="quiz__right-text">500</span>
-                    <span class="quiz__right-text">600</span>
-                    <span class="quiz__right-text">1000</span>
-                    <span class="quiz__right-text">10000</span> -->
-                    
-                </div>
-                <div class="quiz__right-line" style="top: 10px;"></div>
+            <div class="quizInfo" style="display: none;">
+                scscsc
             </div>
 
         </div>
-
-       <div class="quizInfo" style="display: none;">
-        scscsc
-       </div>
 
     </div>
     

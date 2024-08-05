@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
     const QUESTION_URL = fetch("js/bd.json");
-    const quiz = document.querySelector(".quiz");
+    const quiz = document.querySelector(".quiz__wrapper");
     const quizInfo = document.querySelector(".quizInfo");
     const quizAnswers = document.querySelector(".quiz__answers");
     const quizBtn = document.querySelector(".quiz__btn");
