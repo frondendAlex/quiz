@@ -1,3 +1,8 @@
+<?php
+    $login = $_POST['login'];
+    $pass = $_POST['pass'];
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -19,11 +24,16 @@
 
     <div class="adminform">
         <form class="adminform__form" action="" method="POST">
-            <h2 class="adminform__title">Войти</h2>
-            <input class="adminform__input" type="text" placeholder="Ваш логин">
-            <input class="adminform__input" type="text" placeholder="Пароль">
-            <button class="adminform__btn" typr="submit">Подтвердить</button>
+            <h2 class="adminform__title">Зарегистрироваться</h2>
+            <input class="adminform__input" type="text" name="login" placeholder="Ваш логин">
+            <input class="adminform__input" type="text" name="pass" placeholder="Пароль">
+            <button class="adminform__btn" typr="submit">Войти</button>
         </form>
+        <?php 
+        echo $login;
+        echo '<br>';
+        echo $pass;
+        ?>
     </div>
 
 </body>
