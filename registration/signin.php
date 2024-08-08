@@ -1,29 +1,3 @@
-<?php
-    $host = 'localhost';
-    $userName = 'root';
-    $password = '';
-    $db = 'quiz';
-
-    $connection = new mysqli($host, $userName, $password, $db);
-
-    if ($connection -> connect_error) {
-        die('Ошибка подключения: ' . $connection -> connect_error);
-    }
-
-    $login = $_POST['login'];
-    $pass = $_POST['pass'];
-
-    if (isset($login)) {
-        $sql = mysqli_query($connection, "INSERT INTO `registr` (`Login`, `Password`) VALUES ('{$login}', '{$pass}')");
-        // header('Location: ../index.php');
-    }
-
-    
-     
-
-   
-?>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -31,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../css/nullstyle.css">
+    <link rel="stylesheet" href="css/generalstyle.css">
     <link rel="stylesheet" href="css/style.css">
     
     <!-- ** Font ** -->
@@ -43,12 +18,14 @@
 </head>
 <body>
 
+    <?php require_once('../components/registr.php') ?>
+
     <div class="adminform">
         <form class="adminform__form" action="" method="POST">
-            <h2 class="adminform__title">Регистрация</h2>
+            <h2 class="adminform__title">Войти</h2>
             <input class="adminform__input" type="text" name="login" placeholder="Ваш логин">
             <input class="adminform__input" type="text" name="pass" placeholder="Пароль">
-            <button class="adminform__btn" typr="submit">Зарегистрироваться</button>
+            <button class="adminform__btn" typr="submit">Войти</button>
             
         </form>
     </div>

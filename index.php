@@ -6,6 +6,7 @@
 
 
     <link rel="stylesheet" href="css/nullstyle.css">
+    <link rel="stylesheet" href="css/generalstyle.css">
     <link rel="stylesheet" href="css/style.css">
 
     <!-- ** Font ** -->
@@ -19,6 +20,8 @@
 <body>
 
     <div class="app" id="app">
+
+        <?php require_once('components/registr.php') ?>
 
         <div class="start">
             <div class="start__wrap">
@@ -78,14 +81,14 @@
             </div>
 
             <div class="quizInfo" style="display: none;">
-                scscsc
+                Результаты
             </div>
 
         </div>
 
     </div>
     
-    <script src="js/main.js" defer type="module"></script>
+    <script src="js/main.js" defer></script>
     
 </body>
 </html>

@@ -1,38 +1,38 @@
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 input:focus::-webkit-input-placeholder {
-  color: transparent;
+    color: transparent;
 }
 input:focus::-webkit-input-placeholder {
-  color: transparent;
+    color: transparent;
 }
 input:focus:-moz-placeholder {
-  color: transparent;
+    color: transparent;
 }
 input:focus::-moz-placeholder {
-  color: transparent;
+    color: transparent;
 }
 input:focus:-ms-input-placeholder {
-  color: transparent;
+    color: transparent;
 }
 textarea:focus::-webkit-input-placeholder {
-  color: transparent;
+    color: transparent;
 }
 textarea:focus::-webkit-input-placeholder {
-  color: transparent;
+    color: transparent;
 }
 textarea:focus:-moz-placeholder {
-  color: transparent;
+    color: transparent;
 }
 textarea:focus::-moz-placeholder {
-  color: transparent;
+    color: transparent;
 }
 textarea:focus:-ms-input-placeholder {
-  color: transparent;
+    color: transparent;
 }
 
 h1,
@@ -42,78 +42,78 @@ h4,
 h5,
 h6,
 p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 button {
-  padding: 0;
-  margin: 0;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  font-family: inherit;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
 }
 
 input {
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  margin: 0;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 input,
 textarea {
-  font-family: inherit;
-  color: inherit;
-  resize: none;
+    font-family: inherit;
+    color: inherit;
+    resize: none;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 input[type="number"] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 input:focus,
 textarea:focus,
 select {
-  outline: none;
-  transition: all 0.2s linear;
+    outline: none;
+    transition: all 0.2s linear;
 }
 input::placeholder,
 textarea::placeholder {
-  color: inherit;
+    color: inherit;
 }
 
 select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  cursor: pointer;
-  border: none;
-  display: inline-block;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
 }
 
 :root {
-  --basic-black-text: #323a42;
+    --basic-black-text: #323a42;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
