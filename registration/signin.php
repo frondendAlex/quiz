@@ -15,7 +15,6 @@
 
     if (isset($login)) {
         $sql = mysqli_query($connection, "INSERT INTO `registration` (`Login`, `Password`) VALUES ('$login', '$pass')");
-        // header('Location: ../index.php');
     }
 
     
@@ -52,7 +51,6 @@
             <input class="adminform__input" type="text" name="login" placeholder="Ваш логин">
             <input class="adminform__input" type="text" name="pass" placeholder="Пароль">
             <button class="adminform__btn" typr="submit">Войти</button>
-            
         </form>
     </div>
 
