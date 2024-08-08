@@ -1,4 +1,6 @@
-
+<?php
+    $post = $_POST['ssss']
+?>
 
 <!DOCTYPE html>
 <html lang="ru">
