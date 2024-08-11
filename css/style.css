@@ -65,7 +65,15 @@ body {
     gap: 30px;
     width: 100%;
     min-height: 100vh;
-    background: url(../image/bg-quiz.jpg) center / cover no-repeat;
+    /* background: url(../image/bg-quiz.jpg) center / cover no-repeat; */
+    background: linear-gradient(
+        90deg,
+        rgba(5, 3, 36, 0.9612219887955182) 5%,
+        rgba(9, 111, 121, 1) 37%,
+        rgba(6, 148, 170, 1) 67%,
+        rgba(3, 209, 137, 1) 89%,
+        rgba(84, 164, 98, 1) 100%
+    );
     padding: 40px 20px;
     position: relative;
 }

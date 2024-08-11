@@ -159,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     console.log("Yes answer");
                     arrRightAnswer++;
+                    
                 }
             });
         } else {
@@ -232,6 +233,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    // Пргресс бар
     const progressBar = () => {
         quizProgressbar.style.width =
             (countQuestion * 100) / question.length + "%";
