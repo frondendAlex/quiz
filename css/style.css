@@ -99,7 +99,9 @@ body {
 .quiz__right {
     flex: 0 0 300px;
     background-color: #fff;
-    border: 1px solid red;
+    border: 3px solid transparent;
+    border-image: linear-gradient(#e6ff36 , #0B95DD);
+    border-image-slice: 1;
     border-radius: 12px;
     padding: 10px;
     text-align: center;
@@ -122,14 +124,32 @@ body {
     height: 12px;
     border-radius: 50%;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    animation: circle-anim .6s linear forwards;
+    
 }
 .quiz__right-text.checked::after {
     background-color: rgb(46, 155, 46);
+    /* animation: circle-anim 2s linear forwards; */
 }
 .quiz__right-text.nochecked::after {
     background-color: rgb(155, 46, 46);
+    /* animation: circle-anim 2s linear forwards; */
+}
+@keyframes circle-anim {
+    0% {
+        width: 100px;
+        /* transform: translateX(0); */
+        left: 50%;
+    }
+
+    100% {
+        /* transform: translateX(100%); */
+        width: 12px;
+        left: calc(100% - 10px);
+    }
 }
 .quiz__right-line {
     background-color: #4aa933;

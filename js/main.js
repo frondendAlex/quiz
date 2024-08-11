@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let arrRightAnswer = 0;
     let arrWrongAnswer = 0;
 
+    // Начала квиза
     const startQuiz = () => {
         const startBtn = document.querySelector(".start__btn");
         startBtn.addEventListener("click", () => {
