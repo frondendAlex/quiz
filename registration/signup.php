@@ -1,5 +1,5 @@
 <?php
-    $post = $_POST['ssss']
+    $login = $_POST['login'];
 ?>
 
 <!DOCTYPE html>

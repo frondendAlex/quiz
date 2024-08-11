@@ -13,9 +13,11 @@
     $login = $_POST['login'];
     $pass = $_POST['pass'];
 
-    if (isset($login)) {
+    // if (empty($_POST['login']) && empty($_POST['pass'])) {
         $sql = mysqli_query($connection, "INSERT INTO `registration` (`Login`, `Password`) VALUES ('$login', '$pass')");
-    }
+    // }
+
+    
 
     
      
