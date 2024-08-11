@@ -115,9 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
             rightNumber.append(spanText);
         }
 
-        Array.from(
-            rightNumber.querySelectorAll(".quiz__right-text")
-        )[0].classList.add("active");
+        Array.from(rightNumber.querySelectorAll(".quiz__right-text"))[0].classList.add("active");
     };
 
     // События по ответам
@@ -135,6 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (target.classList.contains("checked")) {
                     quizBtn.addEventListener("click", btnClick);
                     quizBtn.textContent = "Ответить";
+                    quizBtn.disabled = false;
                 }
             });
         });
@@ -159,7 +158,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else {
                     console.log("Yes answer");
                     arrRightAnswer++;
-                    
+
+                    // const numbers = rightNumber.querySelectorAll('.quiz__right-text');
+                    // numbers.forEach((element, ind) => {
+                    //     if (el.classList.contains('rightanswer')) {
+                    //         console.log(ind);
+                            
+                    //     }
+                        
+                    // });
                 }
             });
         } else {
@@ -203,15 +210,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Показывает следующий вопрос через 3 секунды
     const showNextQuestion = () => {
+        quizBtn.textContent = "Выберите ответ";
+        quizBtn.classList.remove("quiz__btn-bg");
+        quizBtn.disabled = true;
         btnInterval = setTimeout(() => {
             countQuestion++;
-            quizBtn.classList.remove("quiz__btn-bg");
             quizAnswers.innerHTML = "";
             renderTitle(question);
             renderNumberQuestion(question);
             renderAnswers(question);
             renderWinning(question);
-            quizBtn.textContent = "Выберите ответ";
+            
         }, 2500);
     };
 
