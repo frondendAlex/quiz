@@ -144,35 +144,29 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(btnInterval);
         if (!quizBtn.classList.contains("quiz__btn-bg")) return;
         const answers = document.querySelectorAll(".quiz__answer");
-
+        const numbers = rightNumber.querySelectorAll('.quiz__right-text');
+        
         if (choosingAnswerInd === question[countQuestion].correct) {
             answers[choosingAnswerInd].classList.add("rightanswer");
             answers[choosingAnswerInd].classList.remove("checked");
             priceArr.push(question[countQuestion].price);
             quizTotalEl.textContent = `${totalFun()} очков`;
+            numbers[countQuestion].classList.add('checked');
 
             // Подсвечивает не правильные ответы
-            answers.forEach((el) => {
+            answers.forEach(el => {
                 if (!el.classList.contains("rightanswer")) {
                     el.classList.add("wronganswer");
                 } else {
                     console.log("Yes answer");
                     arrRightAnswer++;
-
-                    // const numbers = rightNumber.querySelectorAll('.quiz__right-text');
-                    // numbers.forEach((element, ind) => {
-                    //     if (el.classList.contains('rightanswer')) {
-                    //         console.log(ind);
-                            
-                    //     }
-                        
-                    // });
                 }
             });
         } else {
             answers[choosingAnswerInd].classList.add("wronganswer");
             answers[choosingAnswerInd].classList.remove("checked");
 
+            numbers[countQuestion].classList.add('nochecked');
             // Подсвечивает правильный ответ
             const content = e.target.closest(".quiz__content");
             const answersEl = content.querySelectorAll(".quiz__answer");
