@@ -1,3 +1,31 @@
+/* .loading .quiz__answer {
+    background-color: red;
+    background-color: rgb(59 59 59 / 69%);
+    height: 35px;
+    position: relative;
+    overflow: hidden;
+}
+.loading .quiz__answer::after {
+    content: "";
+    width: 3%;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-55%) rotate(33deg);
+    filter: blur(8px);
+    animation: animLoading 5s ease-in infinite;
+}
+@keyframes animLoading {
+    20%, 100% {
+        left: 0;
+        left: 110%;
+    }
+    100% {
+        left: 110%;
+    }
+} */
 .registr {
     position: absolute;
     top: 50px;

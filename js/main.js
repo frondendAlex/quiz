@@ -52,9 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Отображает сколько на странице вопросов
     const renderNumberQuestion = (num) => {
         const quizTopText = document.querySelector(".quiz__top");
-        const numberQuestion = `<p class="quiz__top-text">Вопросов <span class="quiz__top-text-num">${
-            countQuestion + 1
-        }</span> из <span class="quiz__top-text-num">${num.length}</span></p>`;
+        const numberQuestion = `
+            <p class="quiz__top-text">Вопросов <span class="quiz__top-text-num">
+                ${countQuestion + 1}
+                </span> из <span class="quiz__top-text-num">${num.length}</span>
+            </p>
+        `;
         quizTopText.innerHTML = numberQuestion;
     };
 

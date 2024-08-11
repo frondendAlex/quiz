@@ -51,7 +51,12 @@
                     <div class="quiz__content">
                         <div class="quiz__question"></div>
                         <div class="quiz__winning"></div>
-                        <div class="quiz__answers"></div>   
+                        <div class="quiz__answers">
+                            <!-- <p class="quiz__answer"></p>
+                            <p class="quiz__answer"></p>
+                            <p class="quiz__answer"></p>
+                            <p class="quiz__answer"></p> -->
+                        </div>   
                         <div class="quiz__button">
                             <button class="quiz__btn" type="button">Выберите ответ</button>
                         </div>
