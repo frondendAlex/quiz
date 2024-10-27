@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const QUESTION_URL = fetch("bd/bd.json");
     const start = document.querySelector(".start");
     const quiz = document.querySelector(".quiz");
+    const quizWrapper = document.querySelector(".quiz__wrapper");
     const quizInfo = document.querySelector(".quizInfo");
     const quizAnswers = document.querySelector(".quiz__answers");
     const quizBtn = document.querySelector(".quiz__btn");
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const quizProgressbarText = document.querySelector(".quiz__progress-text");
 
     const rightNumber = document.querySelector(".quiz__right-wrap");
+    const quizInfoReturnBtn = document.querySelector(".quizInfo__return");
 
     let question;
     let choosingAnswerInd;
@@ -78,8 +80,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (countQuestion >= question.length) {
             countQuestion = 0;
 
-            quiz.style.display = "none";
-            quizInfo.style.display = "block";
+            quizWrapper.style.display = "none";
+            quizInfo.classList.add('show');
+            console.log('1');
+            
 
             // const totalPrice = totalFun();
             // console.log(totalPrice);
@@ -250,6 +254,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const quizFinish = () => {
         const totalPrice = totalFun();
+        const сorrectAnswersHTML = document.getElementById('сorrectAnswers');
+        const wrongAnswersHTML = document.getElementById('wrongAnswers');
+        const itogo = document.getElementById('itogo');
+
+        console.log(сorrectAnswersHTML);
+        console.log(wrongAnswersHTML);
+
+        сorrectAnswersHTML.value = arrRightAnswer;
+        wrongAnswersHTML.value = arrWrongAnswer;
+        itogo.value = totalPrice;
+
         console.log("правильные ", arrRightAnswer);
         console.log("не правильные ", arrWrongAnswer);
         console.log(totalPrice);

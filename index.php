@@ -85,8 +85,24 @@
 
             </div>
 
-            <div class="quizInfo" style="display: none;">
-                Результаты
+            <div class="quizInfo">
+                <div class="quizInfo__wrap">
+                    <form class="quizInfo__from">
+                        
+                        <p class="quizInfo__text">Кол-во правильных ответов:
+                            <input type="text" value="0" id="сorrectAnswers" disabled>
+                        </p>
+                        <p class="quizInfo__text">Кол-во не правильных ответов: 
+                            <input type="text" value="0" id="wrongAnswers" disabled>
+                        </p>
+                        <p>Итого: 
+                            <input type="text" value="0" id="itogo" disabled>
+                        </p>
+
+                        <button class="quizInfo__return" type="button">Заного</button>
+                    </form>
+                   
+                </div>
             </div>
 
         </div>
