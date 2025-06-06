@@ -1,5 +1,10 @@
 <?php
-    $login = $_POST['login'];
+    if(isset($_POST['login']) && isset($_POST['pass'])){
+        $login = $_POST['login'];
+        $pass = $_POST['pass'];
+
+        $sql = mysqli_query($connection, "INSERT INTO `registration` (`Login`, `Password`) VALUES ('$login', '$pass')");
+    }
 ?>
 
 <!DOCTYPE html>
