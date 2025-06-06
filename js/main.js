@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
+    console.log("Hellow World");
+
     const QUESTION_URL = fetch("bd/bd.json");
     const start = document.querySelector(".start");
     const quiz = document.querySelector(".quiz");
